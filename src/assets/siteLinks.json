@@ -1,0 +1,32 @@
+[
+  {
+    "icon": "Compass",
+    "name": "山水的总站",
+    "link": "https://shanshui.site/"
+  },
+  {
+    "icon": "Blog",
+    "name": "山水的博客",
+    "link": "https://blog.shanshui.site/"
+  },
+  {
+    "icon": "Compass",
+    "name": "山水的网址集",
+    "link": "https://nav.shanshui.site/"
+  },
+  {
+    "icon": "Book",
+    "name": "山水的文档",
+    "link": "https://docs.shanshui.site/"
+  },
+  {
+    "icon": "Cloud",
+    "name": "山水的论坛",
+    "link": "https://bbs.shanshui.site/"
+  },
+  {
+    "icon": "LaptopCode",
+    "name": "站点监测",
+    "link": "https://status.shanshui.site/"
+  }
+]

@@ -1,0 +1,48 @@
+# Dev 分支推送部署预览
+## 仅部署 Win 端
+name: 构建推送
+
+on:
+  push:
+    branches:
+      - dev
+      - master
+
+jobs:
+  release:
+    name: 构建网站
+    runs-on: windows-latest
+
+    steps:
+      # 检出 Git 仓库
+      - name: 签出存储库
+        uses: actions/checkout@v4.1.1
+      # 安装 Node.js
+      - name: 安装 Node.js
+        uses: actions/setup-node@v4.0.0
+        with:
+          node-version: "18.x"
+      # 复制环境变量文件
+      - name: 复制 .env 文件
+        run: |
+          if (-not (Test-Path .env)) {
+            Copy-Item .env.example .env
+          } else {
+            Write-Host ".env file already exists. Skipping the copy step."
+          }
+      # 安装项目依赖
+      - name: 安装项目依赖
+        run: npm install
+      # 构建程序
+      - name: 构建网站
+        run: |
+          npm run build  # 如果你的项目需要进行构建
+          git config --global user.email "shanshui20232023@outlook.com"
+          git config --global user.name "[AutoUpload]Shanshui"
+          git checkout --orphan gh-pages
+          git rm -rf .
+          move dist/* .
+          rmdir /S /Q dist
+          git add .
+          git commit -m "Deploy to Github Pages"
+          git push -f origin gh-pages
