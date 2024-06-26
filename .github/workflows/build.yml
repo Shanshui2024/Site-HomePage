@@ -5,8 +5,7 @@ name: 构建推送
 on:
   push:
     branches:
-      - dev
-      - master
+      - main
 
 jobs:
   release:
