@@ -42,7 +42,7 @@ jobs:
       - name: 创建 Pages
         uses: actions/configure-pages@v4
       - name: 安装依赖
-        run: npm ci # 或 pnpm install / yarn install / bun install
+        run: npm install # 或 pnpm install / yarn install / bun install
       - name: 使用 npm 构建
         run: npm run build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
       - name: 上传文件
