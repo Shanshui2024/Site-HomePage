@@ -14,7 +14,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      # 检出 Git 仓库
+      # 检出 Git 仓
       - name: 签出存储库
         uses: actions/checkout@v4.1.1
       # 安装 Node.js
