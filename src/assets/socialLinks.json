@@ -1,7 +1,7 @@
 [{
     "name": "Github",
     "icon": "/images/icon/github.png",
-    "tip": "去 Github 看看",
+    "tip": "我在小小的Github里边挖呀挖呀挖，种小小的坑收获大大的坑（",
     "url": "https://github.com/shanshui2024"
 }, {
     "name": "BiliBili",
@@ -11,7 +11,7 @@
 }, {
     "name": "QQ",
     "icon": "/images/icon/qq.png",
-    "tip": "有什么事吗",
+    "tip": "快来我社区群玩（",
     "url": "https://qm.qq.com/cgi-bin/qm/qr?k=N9MKEYCWHNs4riPxatfCJbNcIwgOLHNv"
 }, {
     "name": "Email",
