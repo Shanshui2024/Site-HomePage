@@ -1,37 +1,32 @@
 [
   {
-    "icon": "Home",
-    "name": "山水的总站",
-    "link": "https://shanshui.site/"
-  },
-  {
     "icon": "Blog",
-    "name": "山水的博客",
+    "name": "博客",
     "link": "https://blog.shanshui.site/"
   },
   {
+    "icon": "Comment",
+    "name": "论坛",
+    "link": "https://forum.shanshui.site/"
+  },
+  {
     "icon": "Compass",
-    "name": "山水的网址集",
+    "name": "网址集",
     "link": "https://nav.shanshui.site/"
   },
   {
     "icon": "Book",
-    "name": "山水的文档",
+    "name": "文档",
     "link": "https://docs.shanshui.site/"
   },
   {
-    "icon": "Comment",
-    "name": "山水的论坛",
-    "link": "https://forum.shanshui.site/"
-  },
-  {
     "icon": "Video",
-    "name": "山水的直播站",
+    "name": "直播站",
     "link": "https://live.shanshui.site/"
   },
   {
     "icon": "Book",
-    "name": "山水社区文档",
+    "name": "社区文档",
     "link": "https://docs.community.shanshui.site/"
   },
   {
