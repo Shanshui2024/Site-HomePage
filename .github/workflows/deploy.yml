@@ -27,8 +27,6 @@ jobs:
   # 构建工作
   build:
     runs-on: ubuntu-latest
-    env:
-      WEATHER_KEY: ${{ secrets.WEATHER_KEY }}
     steps:
       - name: 签出
         uses: actions/checkout@v4
@@ -44,7 +42,8 @@ jobs:
       - name: 创建 Pages
         uses: actions/configure-pages@v4
       - name: 处理变量
-        run: export WEATHER_KEY=${{ env.WEATHER_KEY }}
+        run: |
+          echo "VITE_WEATHER_KEY=${{ secrets.WEATHER_KEY }}" > .env
       - name: 安装依赖
         run: npm install # 或 pnpm install / yarn install / bun install
       - name: 使用 npm 构建
