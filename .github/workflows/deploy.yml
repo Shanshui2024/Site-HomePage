@@ -41,10 +41,6 @@ jobs:
           cache: npm # 或 pnpm / yarn
       - name: 创建 Pages
         uses: actions/configure-pages@v4
-      - name: 处理变量
-        run: |
-          
-          echo "VITE_WEATHER_KEY=${{ secrets.WEATHER_KEY }}" >> .env
       - name: 安装依赖
         run: npm install # 或 pnpm install / yarn install / bun install
       - name: 使用 npm 构建
