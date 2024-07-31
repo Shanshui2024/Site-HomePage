@@ -19,6 +19,10 @@
           </a>
         </span>
         <!-- 站点备案 -->
+        <a v-if="siteIcpmoe" v-bind:href="'https://icp.gov.moe/?keyword=' + siteIcpmoe" target="_blank">
+          &amp;
+          {{ "萌ICP备" + siteIcpmoe + "号"}}
+        </a>
         <a v-if="siteIcp" href="https://beian.miit.gov.cn" target="_blank">
           &amp;
           {{ siteIcp }}
@@ -48,6 +52,7 @@ const fullYear = new Date().getFullYear();
 // 加载配置数据
 const siteStartDate = ref(import.meta.env.VITE_SITE_START);
 const siteIcp = ref(import.meta.env.VITE_SITE_ICP);
+const siteIcpmoe = ref(import.meta.env.VITE_SITE_ICPMOE);
 const SiteAnthor = ref(import.meta.env.VITE_SITE_ANTHOR);
 const SiteUrl = ref(import.meta.env.VITE_SITE_URL);
 </script>
