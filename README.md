@@ -18,7 +18,7 @@
 VITE_SITE_ICPMOE = "00000000"
 ```
 
-同时，我们也对配置文件中的`VITE_WEATHER_KEY`进行了IP白名单调整，所以您需要手动跳转至[高德开放平台控制台](https://console.amap.com/dev/index)申请网页端KEY
+同时，我们也对配置文件中的`VITE_WEATHER_KEY`进行了调整，您需要手动跳转至[高德开放平台控制台](https://console.amap.com/dev/index)申请网页端KEY而不是白嫖
 
 env文件中配置的`VITE_SONG_API`各位随时可以使用，如果域名已到期请尝试自己配置或转回`https://api-meting.imsyy.top/api`
 

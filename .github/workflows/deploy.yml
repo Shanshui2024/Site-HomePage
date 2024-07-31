@@ -27,6 +27,8 @@ jobs:
   # 构建工作
   build:
     runs-on: ubuntu-latest
+    env:
+      WEATHER_KEY: ${{ secrets.WEATHER_KEY }}
     steps:
       - name: 签出
         uses: actions/checkout@v4
