@@ -5,24 +5,29 @@
     "link": "https://blog.shanshui.site/"
   },
   {
-    "icon": "Comment",
-    "name": "论坛",
-    "link": "https://forum.spr.us.kg/"
-  },
-  {
     "icon": "Compass",
     "name": "网址集",
     "link": "https://nav.shanshui.site/"
   },
   {
-    "icon": "Book",
-    "name": "文档",
-    "link": "https://docs.shanshui.site/"
+    "icon": "Donate",
+    "name": "赞助孩子（",
+    "link": "https://donate.shanshui.site/"
   },
   {
-    "icon": "Video",
-    "name": "直播站",
-    "link": "https://live.spr.us.kg/"
+    "icon": "LaptopCode",
+    "name": "站点监测",
+    "link": "https://status.shanshui.site/"
+  },
+  {
+    "icon": "ExternalLinkAlt",
+    "name": "千 万 别 点",
+    "link": "https://qwbd.shanshui.site/"
+  },
+  {
+    "icon": "Book",
+    "name": "山水画路",
+    "link": "https://spr.us.kg/"
   },
   {
     "icon": "Book",
@@ -30,8 +35,13 @@
     "link": "https://docs.spr.us.kg/"
   },
   {
-    "icon": "LaptopCode",
-    "name": "站点监测",
-    "link": "https://status.shanshui.site/"
+    "icon": "Video",
+    "name": "社区直播",
+    "link": "https://live.spr.us.kg/"
+  },
+  {
+    "icon": "Server",
+    "name": "社区服务器",
+    "link": "https://live.spr.us.kg/"
   }
 ]
