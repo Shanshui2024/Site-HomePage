@@ -33,6 +33,6 @@
     "unplugin-vue-components": "^0.22.8",
     "vite": "^4.4.5",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-pwa": "^0.14.1"
+    "vite-plugin-pwa": "^0.21.1"
   }
 }
