@@ -1,0 +1,58 @@
+{
+  "links": [
+    {
+      "name": "星海科技",
+      "description": "你我同在，星海之下",
+      "url": "https://hixinghai.top/",
+      "avatar": "https://hixinghai.top/logo.png"
+    },
+    {
+      "name": "山水画路社区",
+      "description": "这里是山水画路社区～",
+      "url": "https://org.shanshui.site/",
+      "avatar": "https://static.shanshui.site/logo/logo.png"
+    },
+    {
+      "name": "穸阑隐阁文学社",
+      "description": "隐于市井，书写万象",
+      "url": "https://xlyg.fun/",
+      "avatar": "https://xlyg.fun/images/favicon.ico"
+    },
+    {
+      "name": "樱花二次元",
+      "description": "任何可填图片地址的地方皆可以填写樱花API",
+      "url": "https://www.dmoe.cc/",
+      "avatar": "https://www.dmoe.cc/favicon.ico"
+    },
+    {
+      "name": "IceTeam Studio",
+      "description": "始终如一",
+      "url": "https://team.zxwmr.top/",
+      "avatar": "https://team.zxwmr.top/favicon.ico"
+    },
+    {
+      "name": "Cay的小屋",
+      "description": "记录成长，分享知识",
+      "url": "https://www.caynet.cn/",
+      "avatar": "https://img.cdn.caynet.cn/2024-12-1734173116.webp"
+    },
+    {
+      "name": "Shuakami | 速冻饺子",
+      "description": "兄弟们都好香啊～",
+      "url": "https://sdjz.wiki/",
+      "avatar": "https://sdjz.wiki/favicon.ico"
+    },
+    {
+      "name": "XiaoXian",
+      "description": "You can also call him Darf, or 弧渊",
+      "url": "https://xiaoxian.org/",
+      "avatar": "https://static.axtn.net/img/Darf.jpg"
+    },
+    {
+      "name": "幻歆的博客",
+      "description": "It's all fake.",
+      "url": "https://blog.huanxinbot.com/",
+      "avatar": "https://q1.qlogo.cn/g?b=qq&nk=3485462167&s=100"
+    }
+  ]
+}

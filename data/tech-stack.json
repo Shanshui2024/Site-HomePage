@@ -1,0 +1,91 @@
+{
+  "categories": [
+    {
+      "name": "前端开发",
+      "items": [
+        {
+          "name": "React",
+          "icon": "react",
+          "level": "beginner",
+          "category": "前端开发"
+        },
+        {
+          "name": "Next.js",
+          "icon": "nextjs",
+          "level": "beginner",
+          "category": "前端开发"
+        },
+        {
+          "name": "TypeScript",
+          "icon": "typescript",
+          "level": "beginner",
+          "category": "前端开发"
+        },
+        {
+          "name": "TailwindCSS",
+          "icon": "tailwindcss",
+          "level": "intermediate",
+          "category": "前端开发"
+        },
+        {
+          "name": "Vue.js",
+          "icon": "vue",
+          "level": "beginner",
+          "category": "前端开发"
+        }
+      ]
+    },
+    {
+      "name": "后端开发",
+      "items": [
+        {
+          "name": "Node.js",
+          "icon": "nodejs",
+          "level": "beginner",
+          "category": "后端开发"
+        },
+        {
+          "name": "Python",
+          "icon": "python",
+          "level": "advanced",
+          "category": "后端开发"
+        },
+        {
+          "name": "PostgreSQL",
+          "icon": "postgresql",
+          "level": "intermediate",
+          "category": "后端开发"
+        },
+        {
+          "name": "MongoDB",
+          "icon": "mongodb",
+          "level": "intermediate",
+          "category": "后端开发"
+        }
+      ]
+    },
+    {
+      "name": "开发工具",
+      "items": [
+        {
+          "name": "Git",
+          "icon": "git",
+          "level": "expert",
+          "category": "开发工具"
+        },
+        {
+          "name": "Docker",
+          "icon": "docker",
+          "level": "intermediate",
+          "category": "开发工具"
+        },
+        {
+          "name": "VS Code",
+          "icon": "vscode",
+          "level": "expert",
+          "category": "开发工具"
+        }
+      ]
+    }
+  ]
+}
