@@ -4,6 +4,7 @@ import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import { loadProfileFromEnv } from '@/lib/env-config';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 // 从环境变量加载个人信息用于 SEO
 const profile = loadProfileFromEnv();
@@ -90,6 +91,7 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <head>
+        <SpeedInsights/>
         {/* 结构化数据 */}
         <Script
           id="json-ld"
