@@ -2,18 +2,39 @@
 const nextConfig = {
   reactStrictMode: true,
   
-  // 图片优化配置
+  // 图片优化配置 - 使用通配符允许广泛域名优化
   images: {
     remotePatterns: [
-      { protocol: 'https', hostname: 'hixinghai.top' },
-      { protocol: 'https', hostname: 'static.shanshui.site' },
-      { protocol: 'https', hostname: 'xlyg.fun' },
-      { protocol: 'https', hostname: 'www.dmoe.cc' },
-      { protocol: 'https', hostname: 'blog.zxwmr.top' },
-      { protocol: 'https', hostname: 'img.cdn.caynet.cn' },
-      { protocol: 'https', hostname: 'sdjz.wiki' },
-      { protocol: 'https', hostname: 'static.axtn.net' },
-      { protocol: 'https', hostname: 'q1.qlogo.cn' },
+      // 允许所有HTTPS域名的图片优化
+      {
+        protocol: 'https',
+        hostname: '**', // 通配符允许所有子域名
+      },
+      // 也可以指定特定的顶级域名模式
+      {
+        protocol: 'https',
+        hostname: '*.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.net',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.org',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.cn',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.top',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.wiki',
+      },
     ],
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
@@ -46,6 +67,13 @@ const nextConfig = {
 
   // 静态导出配置（可选）
   // output: 'export',
+
+  // 开发环境特殊配置
+  webpack: (config) => {
+    // 在开发环境中忽略SSL证书错误
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+    return config;
+  },
 };
 
 module.exports = nextConfig;

@@ -7,10 +7,11 @@
  */
 
 import React, { useState, useMemo } from 'react';
-import { BookOpen } from 'lucide-react';
+import { BookOpen, ExternalLink, AlertTriangle } from 'lucide-react';
 import BlogPostCard from '@/components/BlogPostCard';
 import TagFilter from '@/components/TagFilter';
 import FadeIn from '@/components/animations/FadeIn';
+import Card from '@/components/ui/Card';
 import type { BlogPost } from '@/types';
 
 interface BlogListClientProps {
@@ -31,8 +32,34 @@ export default function BlogListClient({ allPosts, allTags }: BlogListClientProp
 
   return (
     <div className="space-y-8">
-      {/* 页面标题 */}
+      {/* 新博客地址通知 */}
       <FadeIn>
+        <Card className="bg-gradient-to-br from-yellow-50 to-orange-100 dark:from-yellow-900/20 dark:to-orange-900/20 border-2 border-yellow-200 dark:border-yellow-800">
+          <div className="text-center space-y-4">
+            <div className="flex items-center justify-center space-x-2">
+              <AlertTriangle className="w-6 h-6 text-yellow-600" />
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">重要通知</h2>
+            </div>
+            <p className="text-gray-700 dark:text-gray-300">
+              我的博客已经迁移到新的独立站点，欢迎访问获取最新内容！
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4">
+              <a
+                href="https://blog.shanshui.site"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-6 py-3 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors shadow-md hover:shadow-lg"
+              >
+                访问新博客
+                <ExternalLink className="w-4 h-4 ml-2" />
+              </a>
+            </div>
+          </div>
+        </Card>
+      </FadeIn>
+
+      {/* 页面标题 */}
+      <FadeIn delay={0.1}>
         <div className="text-center space-y-4">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100">
             博客
@@ -45,7 +72,7 @@ export default function BlogListClient({ allPosts, allTags }: BlogListClientProp
 
       {/* 标签筛选 */}
       {allTags.length > 0 && (
-        <FadeIn delay={0.1}>
+        <FadeIn delay={0.2}>
           <div className="flex justify-center">
             <TagFilter
               tags={allTags}
@@ -60,14 +87,14 @@ export default function BlogListClient({ allPosts, allTags }: BlogListClientProp
       {filteredPosts.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredPosts.map((post, index) => (
-            <FadeIn key={post.slug} delay={0.2 + index * 0.05}>
+            <FadeIn key={post.slug} delay={0.3 + index * 0.05}>
               <BlogPostCard post={post} />
             </FadeIn>
           ))}
         </div>
       ) : (
         /* 空状态 */
-        <FadeIn delay={0.2}>
+        <FadeIn delay={0.3}>
           <div className="flex flex-col items-center justify-center py-16 space-y-4">
             <div className="w-24 h-24 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
               <BookOpen className="w-12 h-12 text-gray-400 dark:text-gray-500" />
@@ -94,7 +121,7 @@ export default function BlogListClient({ allPosts, allTags }: BlogListClientProp
 
       {/* 文章统计 */}
       {filteredPosts.length > 0 && (
-        <FadeIn delay={0.3}>
+        <FadeIn delay={0.4}>
           <div className="text-center text-sm text-gray-500 dark:text-gray-400">
             {selectedTag ? (
               <p>
