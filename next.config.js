@@ -1,3 +1,21 @@
+/**
+ * 根据 Umami 配置动态生成 CSP 策略
+ * 当启用 Umami 时，需要允许 Umami 脚本域名和 API 域名
+ */
+function getCSP() {
+  const umamiEnabled = process.env.NEXT_PUBLIC_UMAMI_ENABLED === 'true';
+  const umamiWebsiteId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
+  const umamiSrc = process.env.NEXT_PUBLIC_UMAMI_SRC || 'https://cloud.umami.is/script.js';
+
+  if (umamiEnabled && umamiWebsiteId) {
+    // 从 src URL 中提取 Umami 主机名，用于 CSP 白名单
+    const umamiHost = new URL(umamiSrc).hostname;
+    return `default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://${umamiHost}; connect-src 'self' https://${umamiHost}; sandbox;`;
+  }
+
+  return "default-src 'self'; script-src 'none'; sandbox;";
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -42,7 +60,7 @@ const nextConfig = {
     minimumCacheTTL: 86400, // 24小时缓存
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    contentSecurityPolicy: getCSP(),
   },
 
   // 编译优化

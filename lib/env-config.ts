@@ -46,6 +46,39 @@ export function getEnv(key: string, defaultValue: string = ''): string {
 }
 
 /**
+ * Umami 统计分析配置
+ * 
+ * 环境变量：
+ * - NEXT_PUBLIC_UMAMI_WEBSITE_ID: Umami 网站 ID（必需）
+ * - NEXT_PUBLIC_UMAMI_SRC: Umami 跟踪脚本地址（默认: https://cloud.umami.is/script.js）
+ * - NEXT_PUBLIC_UMAMI_ENABLED: 是否启用 Umami 统计（默认: false）
+ */
+export interface UmamiConfig {
+  /** 是否启用 Umami 统计 */
+  enabled: boolean;
+  /** Umami 网站 ID */
+  websiteId: string;
+  /** Umami 跟踪脚本地址 */
+  src: string;
+}
+
+/**
+ * 获取 Umami 统计配置
+ * 只有同时设置 enabled=true 和 websiteId 时才启用
+ */
+export function getUmamiConfig(): UmamiConfig {
+  const enabled = process.env.NEXT_PUBLIC_UMAMI_ENABLED === 'true';
+  const websiteId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || '';
+  const src = process.env.NEXT_PUBLIC_UMAMI_SRC || 'https://cloud.umami.is/script.js';
+
+  return {
+    enabled: enabled && websiteId.length > 0,
+    websiteId,
+    src,
+  };
+}
+
+/**
  * 检查必需的环境变量是否已设置
  */
 export function checkRequiredEnvVars(vars: string[]): { missing: string[]; isValid: boolean } {

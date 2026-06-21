@@ -3,11 +3,14 @@ import Script from "next/script";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
-import { loadProfileFromEnv } from '@/lib/env-config';
+import { loadProfileFromEnv, getUmamiConfig } from '@/lib/env-config';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 // 从环境变量加载个人信息用于 SEO
 const profile = loadProfileFromEnv();
+
+// Umami 统计配置
+const umamiConfig = getUmamiConfig();
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://portfolio.example.com'),
@@ -92,6 +95,16 @@ export default function RootLayout({
     <html lang="zh-CN">
       <head>
         <SpeedInsights/>
+        {/* Umami 统计分析 - 通过环境变量 NEXT_PUBLIC_UMAMI_ENABLED 控制开关 */}
+        {umamiConfig.enabled && (
+          <Script
+            id="umami-analytics"
+            strategy="afterInteractive"
+            src={umamiConfig.src}
+            data-website-id={umamiConfig.websiteId}
+            data-domains={process.env.NEXT_PUBLIC_SITE_URL ? new URL(process.env.NEXT_PUBLIC_SITE_URL).hostname : undefined}
+          />
+        )}
         {/* 结构化数据 */}
         <Script
           id="json-ld"
