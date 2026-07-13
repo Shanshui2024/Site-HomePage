@@ -69,34 +69,6 @@ export interface TechStackData {
 }
 
 /**
- * 博客文章元数据
- * 从Markdown文件的frontmatter解析
- */
-export interface BlogMetadata {
-  /** 文章标题 */
-  title: string;
-  /** 文章摘要/描述 */
-  description: string;
-  /** 发布日期（ISO 8601格式） */
-  date: string;
-  /** 标签列表 */
-  tags: string[];
-  /** 封面图片路径（可选） */
-  coverImage?: string;
-}
-
-/**
- * 博客文章完整数据模型
- * 包含元数据和内容
- */
-export interface BlogPost extends BlogMetadata {
-  /** 文章唯一标识符（URL slug） */
-  slug: string;
-  /** Markdown格式的文章内容 */
-  content: string;
-}
-
-/**
  * 友情链接数据模型
  */
 export interface FriendLink {
@@ -299,36 +271,6 @@ export interface BadgeProps {
 // ============================================================================
 
 /**
- * 博客文章卡片组件Props
- */
-export interface BlogPostCardProps {
-  /** 博客文章数据 */
-  post: BlogPost;
-}
-
-/**
- * 博客文章列表组件Props
- */
-export interface BlogListProps {
-  /** 博客文章列表 */
-  posts: BlogPost[];
-  /** 当前选中的标签（用于筛选） */
-  selectedTag?: string;
-}
-
-/**
- * 标签筛选组件Props
- */
-export interface TagFilterProps {
-  /** 所有可用标签 */
-  tags: string[];
-  /** 当前选中的标签 */
-  selectedTag?: string;
-  /** 标签选择变化的回调函数 */
-  onTagChange: (tag: string | undefined) => void;
-}
-
-/**
  * 技术栈网格组件Props
  */
 export interface TechStackGridProps {
@@ -427,6 +369,4 @@ export {
   TechStackDataSchema as techStackSchema,
   FriendLinksDataSchema as friendLinksSchema,
   AboutDataSchema as aboutSchema,
-  BlogPostSchema as blogPostSchema,
-  BlogMetadataSchema as blogMetadataSchema,
 } from '@/lib/validation';

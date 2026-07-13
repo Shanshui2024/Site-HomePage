@@ -25,7 +25,7 @@ import Navigation from '../Navigation';
 const navItems = [
   { label: '首页', href: '/' },
   { label: '技术栈', href: '/tech-stack' },
-  { label: '博客', href: '/blog' },
+  { label: '博客', href: 'https://blog.shanshui.site/' },
   { label: '友链', href: '/friends' },
   { label: '关于', href: '/about' },
 ];

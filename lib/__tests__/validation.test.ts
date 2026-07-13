@@ -10,8 +10,6 @@ import {
   TechItemSchema,
   TechCategorySchema,
   TechStackDataSchema,
-  BlogMetadataSchema,
-  BlogPostSchema,
   FriendLinkSchema,
   FriendLinksDataSchema,
   EducationSchema,
@@ -21,7 +19,6 @@ import {
   isProfile,
   isTechItem,
   isTechStackData,
-  isBlogPost,
   isFriendLink,
   isFriendLinksData,
   isAboutData,
@@ -152,68 +149,6 @@ describe('数据验证Schema', () => {
 
       const result = TechStackDataSchema.safeParse(invalidTechStack);
       expect(result.success).toBe(false);
-    });
-  });
-
-  describe('BlogPostSchema', () => {
-    it('应该验证有效的博客文章数据', () => {
-      const validBlogPost = {
-        slug: 'my-first-post',
-        title: '我的第一篇文章',
-        description: '这是一篇测试文章',
-        date: '2024-01-01T00:00:00.000Z',
-        tags: ['React', 'TypeScript'],
-        content: '# 标题\n\n这是文章内容',
-      };
-
-      const result = BlogPostSchema.safeParse(validBlogPost);
-      expect(result.success).toBe(true);
-      expect(isBlogPost(validBlogPost)).toBe(true);
-    });
-
-    it('应该拒绝无效的slug格式', () => {
-      const invalidBlogPost = {
-        slug: 'My First Post', // 包含大写字母和空格
-        title: '我的第一篇文章',
-        description: '这是一篇测试文章',
-        date: '2024-01-01T00:00:00.000Z',
-        tags: ['React'],
-        content: '文章内容',
-      };
-
-      const result = BlogPostSchema.safeParse(invalidBlogPost);
-      expect(result.success).toBe(false);
-      expect(isBlogPost(invalidBlogPost)).toBe(false);
-    });
-
-    it('应该拒绝无效的日期格式', () => {
-      const invalidBlogPost = {
-        slug: 'my-first-post',
-        title: '我的第一篇文章',
-        description: '这是一篇测试文章',
-        date: 'invalid-date',
-        tags: ['React'],
-        content: '文章内容',
-      };
-
-      const result = BlogPostSchema.safeParse(invalidBlogPost);
-      expect(result.success).toBe(false);
-    });
-
-    it('应该允许空的标签数组', () => {
-      const validBlogPost = {
-        slug: 'my-first-post',
-        title: '我的第一篇文章',
-        description: '这是一篇测试文章',
-        date: '2024-01-01T00:00:00.000Z',
-        content: '文章内容',
-      };
-
-      const result = BlogPostSchema.safeParse(validBlogPost);
-      expect(result.success).toBe(true);
-      if (result.success) {
-        expect(result.data.tags).toEqual([]);
-      }
     });
   });
 

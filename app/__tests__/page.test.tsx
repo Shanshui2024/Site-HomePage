@@ -131,7 +131,7 @@ describe('Home Page', () => {
       expect(screen.getByText('博客')).toBeInTheDocument();
       expect(screen.getByText('阅读我的技术文章和心得')).toBeInTheDocument();
       const blogLink = screen.getByTestId('link-blog');
-      expect(blogLink).toHaveAttribute('href', '/blog');
+      expect(blogLink).toHaveAttribute('href', 'https://blog.shanshui.site/');
     });
 
     it('应该显示友链入口', () => {

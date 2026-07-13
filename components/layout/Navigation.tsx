@@ -19,7 +19,7 @@ import ThemeSwitcher from '@/components/ThemeSwitcher';
 const navItems: NavItem[] = [
   { label: '首页', href: '/' },
   { label: '技术栈', href: '/tech-stack' },
-  { label: '博客', href: '/blog' },
+  { label: '博客', href: 'https://blog.shanshui.site/' },
   { label: '友链', href: '/friends' },
   { label: '关于', href: '/about' },
 ];
@@ -53,18 +53,32 @@ export default function Navigation() {
             <div className="hidden md:flex items-center space-x-1">
               {navItems.map((item) => {
                 const active = isActive(item.href);
+                const isExternal = item.href.startsWith('http');
+                const linkClass = `px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  active
+                    ? 'bg-blue-600 text-white font-semibold'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100'
+                }`;
+
+                if (isExternal) {
+                  return (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={linkClass}
+                    >
+                      {item.label}
+                    </a>
+                  );
+                }
+
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`
-                      px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200
-                      ${
-                        active
-                          ? 'bg-blue-600 text-white font-semibold'
-                          : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100'
-                      }
-                    `}
+                    className={linkClass}
                   >
                     {item.label}
                   </Link>

@@ -18,7 +18,7 @@ import { MobileMenuProps, NavItem } from '@/types';
 const navItems: NavItem[] = [
   { label: '首页', href: '/' },
   { label: '技术栈', href: '/tech-stack' },
-  { label: '博客', href: '/blog' },
+  { label: '博客', href: 'https://blog.shanshui.site/' },
   { label: '友链', href: '/friends' },
   { label: '关于', href: '/about' },
 ];
@@ -92,29 +92,43 @@ export default function MobileMenu({ isOpen, onClose, currentPath }: MobileMenuP
             {/* 菜单项列表 */}
             <nav className="p-4">
               <ul className="space-y-2">
-                {navItems.map((item, index) => (
-                  <motion.li
-                    key={item.href}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05, duration: 0.2 }}
-                  >
-                    <Link
-                      href={item.href}
-                      onClick={handleLinkClick}
-                      className={`
-                        block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200
-                        ${
-                          isActive(item.href)
-                            ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300'
-                            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100'
-                        }
-                      `}
+                {navItems.map((item, index) => {
+                  const isExternal = item.href.startsWith('http');
+                  const linkClass = `block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${
+                    isActive(item.href)
+                      ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300'
+                      : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100'
+                  }`;
+
+                  return (
+                    <motion.li
+                      key={item.href}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05, duration: 0.2 }}
                     >
-                      {item.label}
-                    </Link>
-                  </motion.li>
-                ))}
+                      {isExternal ? (
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={handleLinkClick}
+                          className={linkClass}
+                        >
+                          {item.label}
+                        </a>
+                      ) : (
+                        <Link
+                          href={item.href}
+                          onClick={handleLinkClick}
+                          className={linkClass}
+                        >
+                          {item.label}
+                        </Link>
+                      )}
+                    </motion.li>
+                  );
+                })}
               </ul>
             </nav>
           </motion.div>

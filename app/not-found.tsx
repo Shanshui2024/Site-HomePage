@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Home, Search, ArrowLeft } from 'lucide-react';
+import { Home, Search, ArrowLeft, ExternalLink } from 'lucide-react';
 
 /**
  * 404页面
@@ -40,13 +40,15 @@ export default function NotFound() {
               <Home className="w-5 h-5 mr-2" />
               返回首页
             </Link>
-            <Link
-              href="/blog"
+            <a
+              href="https://blog.shanshui.site/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200"
             >
-              <Search className="w-5 h-5 mr-2" />
+              <ExternalLink className="w-5 h-5 mr-2" />
               浏览博客
-            </Link>
+            </a>
           </div>
         </div>
 

@@ -26,7 +26,7 @@ import Navigation from '../Navigation';
 const navItems = [
   { label: '首页', href: '/' },
   { label: '技术栈', href: '/tech-stack' },
-  { label: '博客', href: '/blog' },
+  { label: '博客', href: 'https://blog.shanshui.site/' },
   { label: '友链', href: '/friends' },
   { label: '关于', href: '/about' },
 ];
@@ -48,11 +48,7 @@ function isActive(href: string, pathname: string): boolean {
  */
 const validPathArbitrary = fc.oneof(
   // 基础路径
-  fc.constantFrom('/', '/tech-stack', '/blog', '/friends', '/about'),
-  // 博客子路径
-  fc.string({ minLength: 1, maxLength: 30 })
-    .filter(s => /^[a-zA-Z0-9-]+$/.test(s))
-    .map(slug => `/blog/${slug}`),
+  fc.constantFrom('/', '/tech-stack', '/friends', '/about'),
   // 其他可能的子路径
   fc.string({ minLength: 1, maxLength: 30 })
     .filter(s => /^[a-zA-Z0-9-]+$/.test(s))
@@ -149,7 +145,7 @@ describe('Property 1: 导航激活状态一致性', () => {
   it('子路径应该激活对应的父路径导航项', () => {
     fc.assert(
       fc.property(
-        fc.constantFrom('/tech-stack', '/blog', '/friends', '/about'),
+        fc.constantFrom('/tech-stack', '/friends', '/about'),
         fc.string({ minLength: 1, maxLength: 30 }).filter(s => /^[a-zA-Z0-9-]+$/.test(s)),
         (basePath, subPath) => {
           const fullPath = `${basePath}/${subPath}`;
@@ -197,7 +193,7 @@ describe('Property 1: 导航激活状态一致性', () => {
    */
   it('渲染时激活链接应具有正确的CSS类', () => {
     // 测试几个代表性的路径
-    const testPaths = ['/', '/blog', '/blog/test-post', '/tech-stack', '/about'];
+    const testPaths = ['/', '/tech-stack', '/about'];
     
     testPaths.forEach(pathname => {
       mockPathname.current = pathname;

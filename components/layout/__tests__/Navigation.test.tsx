@@ -60,22 +60,14 @@ describe('Navigation', () => {
       expect(desktopHomeLink).toHaveClass('bg-primary-100', 'text-primary-700');
     });
 
-    it('博客路径应该高亮博客链接', () => {
-      mockUsePathname.mockReturnValue('/blog');
+    it('博客链接应该指向外部站点', () => {
+      mockUsePathname.mockReturnValue('/');
       render(<Navigation />);
       
       const blogLinks = screen.getAllByText('博客');
       const desktopBlogLink = blogLinks[0];
-      expect(desktopBlogLink).toHaveClass('bg-primary-100', 'text-primary-700');
-    });
-
-    it('博客子路径应该高亮博客链接', () => {
-      mockUsePathname.mockReturnValue('/blog/some-post');
-      render(<Navigation />);
-      
-      const blogLinks = screen.getAllByText('博客');
-      const desktopBlogLink = blogLinks[0];
-      expect(desktopBlogLink).toHaveClass('bg-primary-100', 'text-primary-700');
+      expect(desktopBlogLink.closest('a')).toHaveAttribute('href', 'https://blog.shanshui.site/');
+      expect(desktopBlogLink.closest('a')).toHaveAttribute('target', '_blank');
     });
 
     it('技术栈路径应该高亮技术栈链接', () => {
@@ -88,7 +80,7 @@ describe('Navigation', () => {
     });
 
     it('非激活链接不应该有激活样式', () => {
-      mockUsePathname.mockReturnValue('/blog');
+      mockUsePathname.mockReturnValue('/friends');
       render(<Navigation />);
       
       const homeLinks = screen.getAllByText('首页');

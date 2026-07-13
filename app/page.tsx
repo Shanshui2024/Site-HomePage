@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Github, Twitter, Linkedin, Mail, Code, BookOpen, Users, User } from 'lucide-react';
+import { Github, Twitter, Linkedin, Mail, Code, BookOpen, Users, User, ExternalLink } from 'lucide-react';
 import BilibiliIcon from '@/components/icons/BilibiliIcon';
 import QQIcon from '@/components/icons/QQIcon';
 import FadeIn from '@/components/animations/FadeIn';
@@ -42,14 +42,16 @@ export default function Home() {
       icon: Code,
       color: 'text-blue-600',
       bgColor: 'bg-blue-50',
+      isExternal: false,
     },
     {
       title: '博客',
       description: '阅读我的技术文章和心得',
-      href: '/blog',
+      href: 'https://blog.shanshui.site/',
       icon: BookOpen,
       color: 'text-green-600',
       bgColor: 'bg-green-50',
+      isExternal: true,
     },
     {
       title: '友链',
@@ -58,6 +60,7 @@ export default function Home() {
       icon: Users,
       color: 'text-purple-600',
       bgColor: 'bg-purple-50',
+      isExternal: false,
     },
     {
       title: '关于',
@@ -66,6 +69,7 @@ export default function Home() {
       icon: User,
       color: 'text-orange-600',
       bgColor: 'bg-orange-50',
+      isExternal: false,
     },
   ];
 
@@ -144,19 +148,32 @@ export default function Home() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {quickLinks.map((link, index) => {
           const Icon = link.icon;
+          const cardContent = (
+            <Card hover className="h-full">
+              <CardHeader>
+                <div className={`w-12 h-12 rounded-lg ${link.bgColor} flex items-center justify-center mb-3`}>
+                  <Icon className={`w-6 h-6 ${link.color}`} />
+                </div>
+                <CardTitle className="flex items-center gap-1">
+                  {link.title}
+                  {link.isExternal && <ExternalLink className="w-4 h-4 text-gray-400" />}
+                </CardTitle>
+                <CardDescription>{link.description}</CardDescription>
+              </CardHeader>
+            </Card>
+          );
+
           return (
             <SlideIn key={link.href} direction="up" delay={0.5 + index * 0.1}>
-              <Link href={link.href}>
-                <Card hover className="h-full">
-                  <CardHeader>
-                    <div className={`w-12 h-12 rounded-lg ${link.bgColor} flex items-center justify-center mb-3`}>
-                      <Icon className={`w-6 h-6 ${link.color}`} />
-                    </div>
-                    <CardTitle>{link.title}</CardTitle>
-                    <CardDescription>{link.description}</CardDescription>
-                  </CardHeader>
-                </Card>
-              </Link>
+              {link.isExternal ? (
+                <a href={link.href} target="_blank" rel="noopener noreferrer">
+                  {cardContent}
+                </a>
+              ) : (
+                <Link href={link.href}>
+                  {cardContent}
+                </Link>
+              )}
             </SlideIn>
           );
         })}

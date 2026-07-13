@@ -7,10 +7,8 @@
 import {
   ProfileSchema,
   TechStackDataSchema,
-  BlogPostSchema,
   FriendLinkSchema,
   isProfile,
-  isBlogPost,
   validateData,
   validateDataSafe,
   getValidationErrors,
@@ -97,26 +95,7 @@ if (techStackResult.success) {
 }
 
 // ============================================================================
-// 示例 3: 验证博客文章数据
-// ============================================================================
-
-const blogPostData = {
-  slug: 'my-first-post',
-  title: '我的第一篇博客文章',
-  description: '这是一篇关于TypeScript的文章',
-  date: '2024-01-15T10:00:00.000Z',
-  tags: ['TypeScript', 'JavaScript', 'Web开发'],
-  content: '# 标题\n\n这是文章的正文内容...',
-};
-
-if (isBlogPost(blogPostData)) {
-  console.log('✓ 博客文章数据类型正确');
-  console.log(`  - 标题: ${blogPostData.title}`);
-  console.log(`  - 标签: ${blogPostData.tags.join(', ')}`);
-}
-
-// ============================================================================
-// 示例 4: 处理验证错误
+// 示例 3: 处理验证错误
 // ============================================================================
 
 const invalidFriendLink = {
@@ -137,25 +116,6 @@ const errors = getValidationErrors(FriendLinkSchema, invalidFriendLink);
 if (errors.length > 0) {
   console.log('✗ 友链数据验证失败，错误详情:');
   errors.forEach(error => console.log(`  - ${error}`));
-}
-
-// ============================================================================
-// 示例 5: 验证部分数据（使用默认值）
-// ============================================================================
-
-const blogPostWithoutTags = {
-  slug: 'second-post',
-  title: '第二篇文章',
-  description: '没有标签的文章',
-  date: '2024-01-16T10:00:00.000Z',
-  content: '文章内容...',
-  // tags字段被省略，会使用默认值[]
-};
-
-const blogResult = BlogPostSchema.safeParse(blogPostWithoutTags);
-if (blogResult.success) {
-  console.log('✓ 博客文章验证成功（使用默认标签）');
-  console.log(`  - 标签数量: ${blogResult.data.tags.length}`);
 }
 
 // ============================================================================

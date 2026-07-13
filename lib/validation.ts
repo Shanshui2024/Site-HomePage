@@ -11,8 +11,6 @@ import type {
   TechItem,
   TechCategory,
   TechStackData,
-  BlogMetadata,
-  BlogPost,
   FriendLink,
   FriendLinksData,
   Education,
@@ -68,35 +66,6 @@ export const TechCategorySchema = z.object({
  */
 export const TechStackDataSchema = z.object({
   categories: z.array(TechCategorySchema).min(1, { message: '至少需要一个技术栈类别' }),
-});
-
-/**
- * 博客文章元数据Schema
- */
-export const BlogMetadataSchema = z.object({
-  title: z.string().min(1, { message: '文章标题不能为空' }),
-  description: z.string().min(1, { message: '文章描述不能为空' }),
-  date: z.string().refine(
-    (date) => {
-      // 验证ISO 8601日期格式
-      const parsed = new Date(date);
-      return !isNaN(parsed.getTime());
-    },
-    { message: '日期格式不正确，应为ISO 8601格式' }
-  ),
-  tags: z.array(z.string()).default([]),
-  coverImage: z.string().optional(),
-});
-
-/**
- * 博客文章完整数据Schema
- */
-export const BlogPostSchema = BlogMetadataSchema.extend({
-  slug: z.string().min(1, { message: '文章slug不能为空' }).regex(
-    /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
-    { message: 'slug只能包含小写字母、数字和连字符' }
-  ),
-  content: z.string().min(1, { message: '文章内容不能为空' }),
 });
 
 /**
@@ -183,20 +152,6 @@ export function isTechCategory(data: unknown): data is TechCategory {
  */
 export function isTechStackData(data: unknown): data is TechStackData {
   return TechStackDataSchema.safeParse(data).success;
-}
-
-/**
- * 检查数据是否为有效的BlogMetadata
- */
-export function isBlogMetadata(data: unknown): data is BlogMetadata {
-  return BlogMetadataSchema.safeParse(data).success;
-}
-
-/**
- * 检查数据是否为有效的BlogPost
- */
-export function isBlogPost(data: unknown): data is BlogPost {
-  return BlogPostSchema.safeParse(data).success;
 }
 
 /**
